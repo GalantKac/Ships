@@ -1,6 +1,8 @@
+var currentPlayerPositonX;
+var currentPlayerPositonY;
 class PlayerShip {
   constructor() {
-    this.fireSpeed = 10;
+    this.fireSpeed = 10000000000000000000;
     this.fireCooldown = 0;
     this.directionX = 0;
     this.directionY = 0;
@@ -14,6 +16,7 @@ class PlayerShip {
     this.sprite.interactive = true;
     this.sprite.anchor.set(0.5, 0.5);
     this.sprite.position.set(renderer.width * 0.5, renderer.height * 0.5);
+    console.log("posiiton ship:", this.sprite.position)
     this.sprite.scale.set(0.4, 0.4);
 
     stage.addChild(this.sprite);
@@ -26,8 +29,10 @@ class PlayerShip {
     this.keyState[key.keyCode] = true;
 
     if(key.keyCode == 32) {
-        let rocket = new Rocket(this.sprite.position.x,this.sprite.position.y);
-    }
+
+        let rocket = new Rocket(this.sprite.position.x, this.sprite.position.y); 
+
+  }
 
     if (key.keyCode == 37 || key.keyCode == 39)
       this.directionX = this.keyCodes[key.keyCode];
@@ -49,7 +54,6 @@ class PlayerShip {
             this.directionY = this.keyCodes[38];
         else this.directionY = 0;
   }
-
   updateFire()
     {
         if (this.fireCooldown < this.fireSpeed)
@@ -57,14 +61,16 @@ class PlayerShip {
 
         if (this.keyState[32] && this.fireCooldown >= this.fireSpeed)
         {
-            let rocket = new Rocket(this.sprite.position.x, this.sprite.position.y);
-            this.fireCooldown = 0;
+            let rocket = new Rocket(this.sprite.position.x, this.sprite.position.y); 
+           this.fireCooldown = 0;
         }
     }
 
   update() {
     this.sprite.position.x += this.directionX * this.speed;
     this.sprite.position.y += this.directionY * this.speed;
-    this.updateFire();
+    currentPlayerPositonX = this.sprite.position.x;
+    currentPlayerPositonY = this.sprite.position.y;
+    //this.updateFire();
   }
 }

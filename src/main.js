@@ -27,7 +27,7 @@ function init() {
 function loop() {
   starsManager.update();
   playerShip.update();
-  enemyShip.update();
+  //enemyShip.update();
 
   Rocket.list.map(element => {
     element.update();
