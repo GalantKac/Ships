@@ -15,11 +15,12 @@ PIXI.loader
 
 function init() {
   renderer.backgroundColor = 0x000000;
-
   starsManager = new StarsManager();
   playerShip = new PlayerShip();
+  while(enemyList.length <5 ){
+  console.log("tworzymy nowa enenmy");
   enemyShip = new EnemyShip();
-
+  }
   renderer.render(stage);
   loop();
 }
@@ -27,7 +28,9 @@ function init() {
 function loop() {
   starsManager.update();
   playerShip.update();
-  //enemyShip.update();
+  EnemyShip.list.map(element =>{
+    element.update();
+  });
 
   Rocket.list.map(element => {
     element.update();

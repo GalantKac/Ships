@@ -1,8 +1,8 @@
-var currentPlayerPositonX;
-var currentPlayerPositonY;
+var playerPositionX;
+
 class PlayerShip {
   constructor() {
-    this.fireSpeed = 10000000000000000000;
+    this.fireSpeed = 10;
     this.fireCooldown = 0;
     this.directionX = 0;
     this.directionY = 0;
@@ -16,9 +16,8 @@ class PlayerShip {
     this.sprite.interactive = true;
     this.sprite.anchor.set(0.5, 0.5);
     this.sprite.position.set(renderer.width * 0.5, renderer.height * 0.5);
-    console.log("posiiton ship:", this.sprite.position)
     this.sprite.scale.set(0.4, 0.4);
-
+    console.log(renderer.width * 0.5, renderer.height * 0.5);
     stage.addChild(this.sprite);
 
     window.addEventListener("keydown", this.onKeyDown.bind(this));
@@ -68,9 +67,8 @@ class PlayerShip {
 
   update() {
     this.sprite.position.x += this.directionX * this.speed;
+    playerPositionX = this.sprite.position.x;
     this.sprite.position.y += this.directionY * this.speed;
-    currentPlayerPositonX = this.sprite.position.x;
-    currentPlayerPositonY = this.sprite.position.y;
     //this.updateFire();
   }
 }
