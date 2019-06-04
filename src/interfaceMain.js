@@ -20,8 +20,25 @@ var style = new PIXI.TextStyle({
   wordWrapWidth: 440
 });
 
-var logo = new PIXI.Text('Star Ship', style);
+var styleFooter = new PIXI.TextStyle({
+  fontFamily: 'Arial',
+  fontSize: 20,
+  fontStyle: 'italic',
+  fontWeight: 'bold',
+  fill: ['#D3872A', '#F7FF00'], // gradient
+  stroke: '#D3872A',
+  strokeThickness: 5,
+  dropShadow: true,
+  dropShadowColor: '#000000',
+  dropShadowBlur: 4,
+  dropShadowAngle: Math.PI / 6,
+  dropShadowDistance: 6,
+  wordWrap: true,
+  wordWrapWidth: 440
+});
 
+var logo = new PIXI.Text('Star Ship', style);
+var footer = new PIXI.Text(' © Copyright 2019, All Rights Reserved', styleFooter);
 PIXI.loader
   .add([
     "assets/stars_one.png",
@@ -43,8 +60,10 @@ function init() {
   playerShip = new PlayerShip();
   
   
-  logo.position.set(renderer.width * 0.4, renderer.height * 0.1);  
+  logo.position.set(renderer.width * 0.4, renderer.height * 0.1);
+  footer.position.set(renderer.width * 0.4, renderer.height * 0.95);
   stage.addChild(logo);
+  stage.addChild(footer);
   
   buttonPlay = new PIXI.Sprite(PIXI.loader.resources["assets/music-player-play.png"].texture);
   buttonPlay.scale.set(0.2, 0.2);
