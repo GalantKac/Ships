@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Ships</title>
+    </head>
+        <script src="../src/lib/pixi.min.js"></script>
+        <script src="../src/interfaceMain.js"></script>
+        <script src="../src/StarsManager.js"></script>
+        <script src="../src/PlayerShip.js"></script>
+    <body>
+        <script type="text/javascript">
+
+            var type = "WebGL";
+
+            if (!PIXI.utils.isWebGLSupported()) {
+                type = "canvas";
+            }
+
+            PIXI.utils.sayHello(type);
+
+            var renderer = PIXI.autoDetectRenderer(window.innerWidth, window.innerHeight);
+            document.body.appendChild(renderer.view);
+        </script>
+    </body>
+</html>

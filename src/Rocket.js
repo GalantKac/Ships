@@ -22,6 +22,19 @@ class Rocket {
   }
 
   update() {
+    for(var i = 0; i< enemyList.length; i++)
+    { 
+      var tmp = enemyList[i];
+      console.log(tmp.x,tmp.y);
+      var rocketDisX = tmp.x - this.sprite.position.x; 
+      var rocketDisY = tmp.y - this.sprite.position.y;
+      if(rocketDisX>50)
+      {
+        console.log("zrobilem obliczenia");
+        this.sprite.destroy();
+        Rocket.list.splice(Rocket.list.indexOf(this), 1);
+      }
+    }
     this.sprite.position.x += this.speed;
 
     if (this.sprite.position.x > renderer.width * 1.1) {

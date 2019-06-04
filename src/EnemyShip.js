@@ -1,6 +1,7 @@
 var enemyList = [];
 const r = 100;
 var enemyDistance = 50;
+var reset = 10;
 var odleglosc = playerPositionX +200;
 class EnemyShip {
   static get list() {
@@ -19,7 +20,7 @@ class EnemyShip {
     var randomXPosition =
       Math.floor(Math.random() * renderer.width * 1.2) + renderer.width * 1;
     var randomYPosition =
-      Math.floor(Math.random() * renderer.height * 0.8) + renderer.height * 0.2;
+      Math.floor(Math.random() * renderer.height * 0.8) + renderer.height * 0.15;
     this.sprite.position.set(randomXPosition, randomYPosition);
     this.sprite.scale.set(0.4, 0.4);
     this.overlapping = false;
@@ -40,6 +41,11 @@ class EnemyShip {
       console.log("dane: " + randomXPosition, randomYPosition);
       this.odl = enemyDistance;
       enemyDistance += 50;
+      reset++;
+      if(reset>=10)
+      {
+        reset = 0;
+      }
       EnemyShip.list.push(this);
       console.log(enemyList.length);
       stage.addChild(this.sprite);
@@ -48,7 +54,7 @@ class EnemyShip {
     }
   }
 
-  update() {  
+  update() { 
     if (
       this.sprite.position.x >= renderer.width - 100 ||
       this.sprite.position.x > playerPositionX + this.odl

@@ -15,7 +15,7 @@ class PlayerShip {
     );
     this.sprite.interactive = true;
     this.sprite.anchor.set(0.5, 0.5);
-    this.sprite.position.set(renderer.width * 0.5, renderer.height * 0.5);
+    this.sprite.position.set(renderer.width * 0.3, renderer.height * 0.5);
     this.sprite.scale.set(0.4, 0.4);
     console.log(renderer.width * 0.5, renderer.height * 0.5);
     stage.addChild(this.sprite);
@@ -33,19 +33,19 @@ class PlayerShip {
 
   }
 
-    if (key.keyCode == 37 || key.keyCode == 39)
+   /* if (key.keyCode == 37 || key.keyCode == 39)
       this.directionX = this.keyCodes[key.keyCode];
-    else if (key.keyCode == 38 || key.keyCode == 40)
+    else */if (key.keyCode == 38 || key.keyCode == 40)
       this.directionY = this.keyCodes[key.keyCode];
   }
   onKeyUp(key) {
     this.keyState[key.keyCode] = false;
 
-    if (!this.keyState[37] && this.keyState[39])
+    /*if (!this.keyState[37] && this.keyState[39])
             this.directionX = this.keyCodes[39];
         else if (this.keyState[37] && !this.keyState[39])
             this.directionX = this.keyCodes[37];
-        else this.directionX = 0;
+        else this.directionX = 0;*/
 
         if (!this.keyState[38] && this.keyState[40])
             this.directionY = this.keyCodes[40];
