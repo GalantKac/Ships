@@ -25,7 +25,7 @@ var styleFooter = new PIXI.TextStyle({
   fontSize: 20,
   fontStyle: 'italic',
   fontWeight: 'bold',
-  fill: ['#D3872A', '#F7FF00'], // gradient
+  fill: ['#F7FF10', '#F7FF00'], // gradient
   stroke: '#D3872A',
   strokeThickness: 5,
   dropShadow: true,
@@ -38,7 +38,7 @@ var styleFooter = new PIXI.TextStyle({
 });
 
 var logo = new PIXI.Text('Star Ship', style);
-var footer = new PIXI.Text(' © Copyright 2019, All Rights Reserved', styleFooter);
+var about = new PIXI.Text(' © Copyright 2019, All Rights Reserved', styleFooter);
 PIXI.loader
   .add([
     "assets/stars_one.png",
@@ -47,6 +47,9 @@ PIXI.loader
     "assets/about-us.png",
     "assets/music-player-play.png",
     "assets/ship.png",
+    "assets/facebook.png",
+    "assets/instagram.png",
+    "assets/twitter.png",
   ])
   .load(init);
 
@@ -61,9 +64,9 @@ function init() {
   
   
   logo.position.set(renderer.width * 0.4, renderer.height * 0.1);
-  footer.position.set(renderer.width * 0.4, renderer.height * 0.95);
+  about.position.set(renderer.width * 0.4, renderer.height * 0.95);
   stage.addChild(logo);
-  stage.addChild(footer);
+  stage.addChild(about);
   
   buttonPlay = new PIXI.Sprite(PIXI.loader.resources["assets/music-player-play.png"].texture);
   buttonPlay.scale.set(0.2, 0.2);
@@ -82,7 +85,7 @@ function init() {
   buttonSettings.y = renderer.height * 0.5;
   buttonSettings.interactive = true;
   buttonSettings.buttonMode = true;
-  buttonSettings.on('mousedown', onClickPlay);
+ // buttonSettings.on('mousedown', onClickPlay);
   buttonSettings.on('mouseover', Over);
   buttonSettings.on('mouseout', Out);
   stage.addChild(buttonSettings);
@@ -93,11 +96,38 @@ function init() {
   buttonAbout.y = renderer.height * 0.7;
   buttonAbout.interactive = true;
   buttonAbout.buttonMode = true;
-  buttonAbout.on('mousedown', onClickPlay);
+  buttonAbout.on('mousedown', onClickAbout);
   buttonAbout.on('mouseover', Over);
   buttonAbout.on('mouseout', Out);
   stage.addChild(buttonAbout);
+
+  fb = new PIXI.Sprite(PIXI.loader.resources["assets/facebook.png"].texture);
+  fb.scale.set(0.05, 0.05);
+  fb.x = renderer.width * 0.65;
+  fb.y = renderer.height * 0.95;
+  fb.interactive = true;
+  fb.buttonMode = true;
+  fb.on('mousedown', onClickFb);
+  stage.addChild(fb);
+
+  instagram = new PIXI.Sprite(PIXI.loader.resources["assets/instagram.png"].texture);
+  instagram.scale.set(0.05, 0.05);
+  instagram.x = renderer.width * 0.67;
+  instagram.y = renderer.height * 0.95;
+  instagram.interactive = true;
+  instagram.buttonMode = true;
+  instagram.on('mousedown', onClickInstagram);
+  stage.addChild(instagram);
   
+  twitter = new PIXI.Sprite(PIXI.loader.resources["assets/twitter.png"].texture);
+  twitter.scale.set(0.05, 0.05);
+  twitter.x = renderer.width * 0.69;
+  twitter.y = renderer.height * 0.95;
+  twitter.interactive = true;
+  twitter.buttonMode = true;
+  twitter.on('mousedown', onClickTwitter);
+  stage.addChild(twitter);
+
   renderer.render(stage);
   loop();
 }
@@ -112,6 +142,22 @@ function loop() {
 
 function onClickPlay() {
   window.open('index.html','_self');
+}
+
+function onClickFb() {
+  window.open('https://www.facebook.com/','_self');
+}
+
+function onClickInstagram() {
+  window.open('https://www.instagram.com/','_self');
+}
+
+function onClickTwitter() {
+  window.open('https://twitter.com/?lang=pl','_self');
+}
+
+function onClickAbout(){
+  window.open('about.html','_self');
 }
 
 function Over()
